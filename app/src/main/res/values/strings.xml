@@ -2,4 +2,6 @@
     <string name="app_name">Out Draw</string>
     <string name="welcome_text">“You must have chaos within you to give birth to a dancing star.”</string>
     <string name="start_button">go paint </string>
+    <string name="gallery_text">Gallery</string>
+    <string name="canvasContentDescription">This is an empty canvas.. start painting!</string>
 </resources>

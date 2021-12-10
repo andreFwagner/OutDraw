@@ -9,5 +9,16 @@
         android:id="@+id/homeFragment"
         android:name="com.example.android.outdraw.home.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_paintFragment"
+            app:destination="@id/paintFragment"
+            app:enterAnim="@anim/fragment_fade_in"
+            app:popExitAnim="@anim/fragment_fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/paintFragment"
+        android:name="com.example.android.outdraw.paint.PaintFragment"
+        android:label="fragment_paint"
+        tools:layout="@layout/fragment_paint" />
 </navigation>
