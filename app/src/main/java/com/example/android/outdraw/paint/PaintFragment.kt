@@ -49,7 +49,7 @@ class PaintFragment : BaseFragment() {
         }
 
         binding.paintSaveButton.setOnClickListener {
-            _viewModel.showToast.value = "Painting saved!"
+            _viewModel.showToast.value = getString(R.string.painting_saved)
             // TODO implement saving
             clearCanvas()
         }
