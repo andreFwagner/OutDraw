@@ -36,7 +36,7 @@
             android:background="@drawable/text_bg"
             android:fontFamily="@font/annie_use_your_telescope"
             android:includeFontPadding="false"
-            android:paddingStart="35dp"
+            android:paddingStart="40dp"
             android:paddingTop="23dp"
             android:paddingEnd="17dp"
             android:paddingBottom="10dp"

@@ -6,6 +6,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.findFragment
 import com.example.android.outdraw.R
 import kotlin.math.abs
 import kotlin.random.Random
@@ -16,7 +17,6 @@ class MyCanvasView(context: Context) : View(context) {
 
     private lateinit var extraCanvas: Canvas
     private lateinit var extraBitmap: Bitmap
-
 
     private val touchTolerance = ViewConfiguration.get(context).scaledTouchSlop
 
@@ -45,6 +45,7 @@ class MyCanvasView(context: Context) : View(context) {
     private val path = Path()
 
     private fun touchStart() {
+        this.findFragment<PaintFragment>().fadeUIOut()
         randomColor()
         path.reset()
         path.moveTo(motionTouchEventX, motionTouchEventY)
@@ -68,6 +69,7 @@ class MyCanvasView(context: Context) : View(context) {
     }
 
     private fun touchUp() {
+        this.findFragment<PaintFragment>().fadeUIIn()
         path.reset()
     }
 
