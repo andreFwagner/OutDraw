@@ -2,12 +2,18 @@ package com.example.android.outdraw.paint
 
 import android.content.Context
 import android.graphics.*
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.findFragment
 import com.example.android.outdraw.R
+import java.io.File
+import java.io.FileOutputStream
+import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.math.abs
 import kotlin.random.Random
 
@@ -105,5 +111,19 @@ class MyCanvasView(context: Context) : View(context) {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawBitmap(extraBitmap, 0f, 0f, null)
+    }
+
+    fun saveBitmap(): String {
+        val format = SimpleDateFormat("dd-M-yyy-hh-mm-ss")
+        val date = format.format(Date())
+        val file = File(context.getExternalFilesDir(null).toString() + "/painting-$date.png")
+
+        try {
+            extraBitmap.compress(Bitmap.CompressFormat.PNG, 100, FileOutputStream(file))
+        } catch (e: Exception) {
+            Log.e(null, "Error Saving Bitmap: $e")
+        }
+
+        return file.path.toString()
     }
 }

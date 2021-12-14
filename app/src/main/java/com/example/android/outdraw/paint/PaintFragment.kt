@@ -2,11 +2,13 @@ package com.example.android.outdraw.paint
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.animation.doOnEnd
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.example.android.outdraw.R
@@ -16,6 +18,8 @@ import com.udacity.project4.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PaintFragment : BaseFragment() {
+
+    private val REQUEST_STORAGE_PERMISSION = 1
 
     override val _viewModel: HomeViewModel by viewModel()
     private lateinit var binding: FragmentPaintBinding
@@ -49,19 +53,45 @@ class PaintFragment : BaseFragment() {
         }
 
         binding.paintSaveButton.setOnClickListener {
-            _viewModel.showToast.value = getString(R.string.painting_saved)
-            // TODO implement saving
-            clearCanvas()
+            checkPermissionsBeforeSave()
         }
 
         binding.paintClearButton.setOnClickListener {
             clearCanvas()
+            _viewModel.showWork()
+        }
+    }
+
+    private fun checkPermissionsBeforeSave() {
+        if (isPermissionGranted()) {
+            _viewModel.savePainting(myCanvasView.saveBitmap())
+            clearCanvas()
+        } else {
+            requestPermissions(
+                arrayOf<String>(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUEST_STORAGE_PERMISSION
+            )
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_STORAGE_PERMISSION && grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            checkPermissionsBeforeSave()
+        } else {
+            _viewModel.showToast.value = "Storage Permission is needed to save your paintings!"
+            requestPermissions(
+                arrayOf<String>(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUEST_STORAGE_PERMISSION
+            )
         }
     }
 
     private fun clearCanvas() {
         val clearCanvasAnimation = ObjectAnimator.ofFloat(myCanvasView, View.ALPHA, 0.0f)
-        clearCanvasAnimation.duration = 2000
+        clearCanvasAnimation.duration = 1000
         clearCanvasAnimation.start()
 
         clearCanvasAnimation.doOnEnd {
@@ -81,8 +111,8 @@ class PaintFragment : BaseFragment() {
         val saveButtonAnimator = ObjectAnimator.ofFloat(binding.paintSaveButton, View.ALPHA, 0.7f)
         val clearButtonAnimator = ObjectAnimator.ofFloat(binding.paintClearButton, View.ALPHA, 0.7f)
         animationSet.playTogether(backButtonAnimator, saveButtonAnimator, clearButtonAnimator)
-        animationSet.duration = 1500
-        animationSet.startDelay = 1500
+        animationSet.duration = 1000
+        animationSet.startDelay = 1000
         animationSet.start()
 
         animationSet.doOnEnd {
@@ -105,5 +135,14 @@ class PaintFragment : BaseFragment() {
         binding.paintBackButton.isClickable = false
         binding.paintSaveButton.isClickable = false
         binding.paintClearButton.isClickable = false
+    }
+
+    private fun isPermissionGranted(): Boolean {
+        return context?.let {
+            ContextCompat.checkSelfPermission(
+                it,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+        } == PackageManager.PERMISSION_GRANTED
     }
 }
