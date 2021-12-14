@@ -1,7 +1,9 @@
 package com.example.android.outdraw
 
 import android.app.Application
+import com.example.android.outdraw.database.LocalDB
 import com.example.android.outdraw.home.HomeViewModel
+import com.example.android.outdraw.repository.Repository
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
@@ -19,7 +21,8 @@ class MyApp : Application() {
             // Declare a ViewModel - be later inject into Fragment with dedicated injector using by viewModel()
             viewModel {
                 HomeViewModel(
-                    get()
+                    get(),
+                    get() as Repository
                 )
             }
             // Declare singleton definitions to be later injected using by inject()
@@ -30,8 +33,8 @@ class MyApp : Application() {
 //                    get() as ReminderDataSource
 //                )
 //            }
-//            single { RemindersLocalRepository(get()) as ReminderDataSource }
-//            single { LocalDB.createRemindersDao(this@MyApp) }
+            single { Repository(get()) as Repository }
+            single { LocalDB.createDatabaseDao(this@MyApp) }
         }
 
         startKoin {
