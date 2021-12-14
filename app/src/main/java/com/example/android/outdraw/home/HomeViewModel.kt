@@ -36,8 +36,8 @@ class HomeViewModel(val app: Application, private val repository: Repository) : 
         showToast.value = app.getString(R.string.painting_saved)
     }
 
-    fun showWork() {
-        val test = paintingsList.value?.first()?.image
-        Log.e("FLOW", test!!)
-    }
+//    fun showWork() {
+//        val test = paintingsList.value?.first()?.image
+//        Log.e("FLOW", test!!)
+//    }
 }

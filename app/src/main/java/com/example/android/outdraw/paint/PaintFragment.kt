@@ -58,7 +58,7 @@ class PaintFragment : BaseFragment() {
 
         binding.paintClearButton.setOnClickListener {
             clearCanvas()
-            _viewModel.showWork()
+//            _viewModel.showWork()
         }
     }
 
