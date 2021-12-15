@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.example.android.outdraw.R
 import com.example.android.outdraw.databinding.FragmentPaintBinding
+import com.example.android.outdraw.gallery.GalleryViewModel
 import com.example.android.outdraw.home.HomeViewModel
 import com.udacity.project4.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,7 +22,7 @@ class PaintFragment : BaseFragment() {
 
     private val REQUEST_STORAGE_PERMISSION = 1
 
-    override val _viewModel: HomeViewModel by viewModel()
+    override val _viewModel: GalleryViewModel by viewModel()
     private lateinit var binding: FragmentPaintBinding
     private lateinit var myCanvasView: MyCanvasView
     private var animationSet = AnimatorSet()
@@ -58,7 +59,6 @@ class PaintFragment : BaseFragment() {
 
         binding.paintClearButton.setOnClickListener {
             clearCanvas()
-//            _viewModel.showWork()
         }
     }
 

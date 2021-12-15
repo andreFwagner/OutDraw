@@ -15,10 +15,44 @@
             app:destination="@id/paintFragment"
             app:enterAnim="@anim/fragment_fade_in"
             app:popExitAnim="@anim/fragment_fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_galleryFragment"
+            app:destination="@id/galleryFragment"
+            app:enterAnim="@anim/fragment_fade_in"
+            app:popExitAnim="@anim/fragment_fade_out" />
     </fragment>
     <fragment
         android:id="@+id/paintFragment"
         android:name="com.example.android.outdraw.paint.PaintFragment"
         android:label="fragment_paint"
         tools:layout="@layout/fragment_paint" />
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.example.android.outdraw.gallery.GalleryFragment"
+        android:label="GalleryFragment" >
+        <action
+            android:id="@+id/action_galleryFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/fragment_fade_in"
+            app:exitAnim="@anim/fragment_fade_out"
+            app:popEnterAnim="@anim/fragment_fade_in"
+            app:popExitAnim="@anim/fragment_fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.android.outdraw.gallery.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="selectedPainting"
+            app:argType="com.example.android.outdraw.database.Painting" />
+        <action
+            android:id="@+id/action_detailFragment_to_galleryFragment"
+            app:destination="@id/galleryFragment"
+            app:enterAnim="@anim/fragment_fade_in"
+            app:exitAnim="@anim/fragment_fade_out"
+            app:popEnterAnim="@anim/fragment_fade_in"
+            app:popExitAnim="@anim/fragment_fade_out"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
 </navigation>

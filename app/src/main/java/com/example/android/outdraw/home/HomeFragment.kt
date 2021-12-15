@@ -6,15 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavDirections
 import com.example.android.outdraw.R
 import com.example.android.outdraw.databinding.FragmentHomeBinding
+import com.example.android.outdraw.gallery.GalleryViewModel
 import com.udacity.project4.base.BaseFragment
 import com.udacity.project4.base.NavigationCommand
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment() {
 
-    override val _viewModel: HomeViewModel by viewModel()
+    override val _viewModel: GalleryViewModel by viewModel()
     private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
@@ -35,11 +37,14 @@ class HomeFragment : BaseFragment() {
         binding.lifecycleOwner = this
 
         binding.homeStartButton.setOnClickListener {
-            navigateToPaint()
+            navigateTo(HomeFragmentDirections.actionHomeFragmentToPaintFragment())
+        }
+        binding.homeGalleryButton.setOnClickListener {
+            navigateTo(HomeFragmentDirections.actionHomeFragmentToGalleryFragment())
         }
     }
 
-    private fun navigateToPaint() {
+    private fun navigateTo(direction: NavDirections) {
         val listener = object : MotionLayout.TransitionListener {
             override fun onTransitionStarted(
                 motionLayout: MotionLayout?,
@@ -61,10 +66,10 @@ class HomeFragment : BaseFragment() {
             override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
                 _viewModel.navigationCommand.postValue(
                     NavigationCommand.To(
-                        HomeFragmentDirections.actionHomeFragmentToPaintFragment()
+                        direction
                     )
                 )
-                 binding.homeConstraint.removeTransitionListener(this)
+                binding.homeConstraint.removeTransitionListener(this)
             }
 
             override fun onTransitionTrigger(

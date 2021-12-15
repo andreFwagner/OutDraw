@@ -9,7 +9,7 @@ interface DatabaseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun savePainting(painting: Painting)
 
-    @Query("SELECT * from Painting ORDER BY date DESC")
+    @Query("SELECT * from Painting ORDER BY id DESC")
     fun getAll(): List<Painting>
 
     @Delete
