@@ -7,4 +7,7 @@
     <string name="painting_saved">Painting saved!</string>
     <string name="delete_dialog">You really want to delete this painting?</string>
     <string name="painting_deleted">Painting was deleted</string>
+    <string name="share_text">Look what I did! using Out Draw</string>
+    <string name="sharing_failed">Something went wrong..</string>
+    <string name="share_where">where to share?</string>
 </resources>

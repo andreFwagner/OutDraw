@@ -21,7 +21,7 @@ private const val STROKE_WIDTH = 12f
 
 class MyCanvasView(context: Context) : View(context) {
 
-    private lateinit var extraCanvas: Canvas
+    lateinit var extraCanvas: Canvas
     private lateinit var extraBitmap: Bitmap
 
     private val touchTolerance = ViewConfiguration.get(context).scaledTouchSlop

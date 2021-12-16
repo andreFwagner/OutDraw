@@ -29,11 +29,9 @@ class GalleryViewModel(val app: Application, private val repository: Repository)
     val selectedPainting: LiveData<Painting>
         get() = _selectedPainting
 
-
     init {
         loadPaintings()
     }
-
 
     fun savePainting(path: String) {
         val format = SimpleDateFormat("yyy-M-dd")

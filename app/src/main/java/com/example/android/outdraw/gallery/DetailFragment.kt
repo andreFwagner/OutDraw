@@ -1,14 +1,18 @@
 package com.example.android.outdraw.gallery
 
 import android.app.AlertDialog
+import android.content.ActivityNotFoundException
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import androidx.navigation.fragment.findNavController
+import androidx.core.app.ShareCompat
+import androidx.core.net.toUri
 import com.example.android.outdraw.R
 import com.example.android.outdraw.database.Painting
 import com.example.android.outdraw.databinding.FragmentDetailBinding
 import com.udacity.project4.base.BaseFragment
+import com.udacity.project4.base.NavigationCommand
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailFragment : BaseFragment() {
@@ -37,7 +41,11 @@ class DetailFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.detailBackButton.setOnClickListener {
-            findNavController().navigateUp()
+            _viewModel.navigationCommand.postValue(NavigationCommand.Back)
+        }
+
+        binding.detailShareButton.setOnClickListener {
+            onShare()
         }
 
         binding.detailDeleteButton.setOnClickListener {
@@ -56,6 +64,20 @@ class DetailFragment : BaseFragment() {
                     }
                 )
                 .create().show()
+        }
+    }
+
+    private fun onShare() {
+        val shareIntent = ShareCompat.IntentBuilder.from(requireActivity())
+            .setText(getString(R.string.share_text))
+            .setStream(painting.image.toUri())
+            .setType("image/*")
+            .intent
+
+        try {
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.share_where)))
+        } catch (ex: ActivityNotFoundException) {
+            _viewModel.showToast.value = getString(R.string.sharing_failed)
         }
     }
 }

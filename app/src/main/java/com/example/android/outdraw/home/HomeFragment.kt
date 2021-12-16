@@ -1,5 +1,7 @@
 package com.example.android.outdraw.home
 
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +31,8 @@ class HomeFragment : BaseFragment() {
             R.layout.fragment_home, container, false
         )
 
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_USER
+
         return binding.root
     }
 
@@ -41,6 +45,17 @@ class HomeFragment : BaseFragment() {
         }
         binding.homeGalleryButton.setOnClickListener {
             navigateTo(HomeFragmentDirections.actionHomeFragmentToGalleryFragment())
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation === Configuration.ORIENTATION_LANDSCAPE) {
+            binding.homeBackground.setImageResource(R.drawable.back_3_1_wide)
+        } else if (newConfig.orientation === Configuration.ORIENTATION_PORTRAIT) {
+            binding.homeBackground.setImageResource(R.drawable.back_3_1)
         }
     }
 

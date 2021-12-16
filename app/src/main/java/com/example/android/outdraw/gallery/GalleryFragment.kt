@@ -41,7 +41,7 @@ class GalleryFragment : BaseFragment() {
         binding.galleryGrid.adapter?.notifyDataSetChanged()
 
         binding.galleryBackButton.setOnClickListener {
-            findNavController().navigateUp()
+            _viewModel.navigationCommand.postValue(NavigationCommand.Back)
         }
 
         _viewModel.navigateToSelectedPainting.observe(

@@ -2,6 +2,7 @@ package com.example.android.outdraw.paint
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +11,11 @@ import android.view.ViewGroup
 import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.findNavController
 import com.example.android.outdraw.R
 import com.example.android.outdraw.databinding.FragmentPaintBinding
 import com.example.android.outdraw.gallery.GalleryViewModel
-import com.example.android.outdraw.home.HomeViewModel
 import com.udacity.project4.base.BaseFragment
+import com.udacity.project4.base.NavigationCommand
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PaintFragment : BaseFragment() {
@@ -37,8 +37,9 @@ class PaintFragment : BaseFragment() {
             R.layout.fragment_paint, container, false
         )
 
-        myCanvasView = MyCanvasView(requireContext())
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LOCKED
 
+        myCanvasView = MyCanvasView(requireContext())
         myCanvasView.contentDescription = getString(R.string.canvasContentDescription)
 
         binding.paintConstraint.addView(myCanvasView)
@@ -50,7 +51,7 @@ class PaintFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.paintBackButton.setOnClickListener {
-            findNavController().popBackStack()
+            _viewModel.navigationCommand.postValue(NavigationCommand.Back)
         }
 
         binding.paintSaveButton.setOnClickListener {
