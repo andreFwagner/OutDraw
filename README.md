@@ -2,13 +2,6 @@
 a drawing app to push you out of your comfort zone
 
 
-## TODOS
-- Database
-
-- Connecting to Quotes API
-
-- WorkManager and Notifications
-
 
 ## Screenshots
 
