@@ -1,7 +1,10 @@
 package com.example.android.outdraw.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
+
+/**
+ * Dao for the Roomdatabase
+ */
 
 @Dao
 interface DatabaseDao {
@@ -17,4 +20,10 @@ interface DatabaseDao {
 
     @Query("SELECT * FROM Painting where id = :paintingId")
     fun getPaintingById(paintingId: Long): Painting?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun saveArtPiece(artPieceData: ArtPieceData)
+
+    @Query("SELECT * FROM ArtPieceData where id = 1")
+    fun getArtPiece(): ArtPieceData?
 }

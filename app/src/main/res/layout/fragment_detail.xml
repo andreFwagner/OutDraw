@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.android.outdraw.gallery.GalleryViewModel" />
@@ -11,7 +12,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/detail_toolbar"
@@ -88,8 +89,6 @@
             app:layout_constraintTop_toBottomOf="@+id/detail_toolbar"
             app:layout_constraintVertical_bias="1.0"
             tools:src="@tools:sample/backgrounds/scenic" />
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

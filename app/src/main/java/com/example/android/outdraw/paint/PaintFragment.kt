@@ -18,6 +18,10 @@ import com.udacity.project4.base.BaseFragment
 import com.udacity.project4.base.NavigationCommand
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+/**
+ * PaintFragment loading MyCanvasView to paint, handling Navigation and Animation of UI and checks Permissions for saving
+ */
+
 class PaintFragment : BaseFragment() {
 
     private val REQUEST_STORAGE_PERMISSION = 1
@@ -37,6 +41,7 @@ class PaintFragment : BaseFragment() {
             R.layout.fragment_paint, container, false
         )
 
+        // Locks Orientation's otherwise drawing gets distorted
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LOCKED
 
         myCanvasView = MyCanvasView(requireContext())

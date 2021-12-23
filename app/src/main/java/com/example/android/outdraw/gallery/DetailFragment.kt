@@ -15,6 +15,10 @@ import com.udacity.project4.base.BaseFragment
 import com.udacity.project4.base.NavigationCommand
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+/**
+ * DetailFragment handling the Navigation and ShareIntent of teh DetailScreen
+ */
+
 class DetailFragment : BaseFragment() {
 
     override val _viewModel: GalleryViewModel by viewModel()
@@ -69,9 +73,9 @@ class DetailFragment : BaseFragment() {
 
     private fun onShare() {
         val shareIntent = ShareCompat.IntentBuilder.from(requireActivity())
+            .setType("image/*")
             .setText(getString(R.string.share_text))
             .setStream(painting.image.toUri())
-            .setType("image/*")
             .intent
 
         try {

@@ -25,6 +25,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.outdraw.database.Painting
 import com.example.android.outdraw.databinding.GridViewItemBinding
 
+/**
+ * ListAdapter and ViewHolder for RecyclerView
+ */
+
 class PhotoGridAdapter(val onClickListener: OnClickListener) : ListAdapter<Painting, PhotoGridAdapter.PaintingViewHolder>(DiffCallback) {
     companion object DiffCallback : DiffUtil.ItemCallback<Painting>() {
         override fun areItemsTheSame(oldItem: Painting, newItem: Painting): Boolean {

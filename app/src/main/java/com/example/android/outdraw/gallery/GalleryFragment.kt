@@ -5,12 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import com.example.android.outdraw.databinding.FragmentGalleryBinding
 import com.example.android.outdraw.utils.PhotoGridAdapter
 import com.udacity.project4.base.BaseFragment
 import com.udacity.project4.base.NavigationCommand
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
+/**
+ * GalleryFragment handling Navigation of the GalleryScreen (incl. RecyclerView)
+ */
 
 class GalleryFragment : BaseFragment() {
 

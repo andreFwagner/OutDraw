@@ -1,7 +1,11 @@
 package com.example.android.outdraw
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+
+/**
+ * MainActivity
+ */
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

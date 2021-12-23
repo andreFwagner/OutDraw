@@ -10,4 +10,6 @@
     <string name="share_text">Look what I did! using Out Draw</string>
     <string name="sharing_failed">Something went wrong..</string>
     <string name="share_where">where to share?</string>
+    <string name="about_text">Draw App pushes you out of your usual habits with choosing color and thickness of every line you draw.</string>
+    <string name="about_text2">And careful! Once drawn there\'s no going back.</string>
 </resources>

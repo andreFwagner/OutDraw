@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.example.android.outdraw.home.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_paintFragment"
             app:destination="@id/paintFragment"
@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/galleryFragment"
         android:name="com.example.android.outdraw.gallery.GalleryFragment"
-        android:label="GalleryFragment" >
+        android:label="GalleryFragment">
         <action
             android:id="@+id/action_galleryFragment_to_detailFragment"
             app:destination="@id/detailFragment"
@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.android.outdraw.gallery.DetailFragment"
-        android:label="DetailFragment" >
+        android:label="DetailFragment">
         <argument
             android:name="selectedPainting"
             app:argType="com.example.android.outdraw.database.Painting" />

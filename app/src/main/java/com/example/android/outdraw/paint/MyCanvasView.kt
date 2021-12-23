@@ -17,6 +17,10 @@ import java.util.*
 import kotlin.math.abs
 import kotlin.random.Random
 
+/**
+ * View with Drawing Logic and Save Function
+ */
+
 private const val STROKE_WIDTH = 12f
 
 class MyCanvasView(context: Context) : View(context) {

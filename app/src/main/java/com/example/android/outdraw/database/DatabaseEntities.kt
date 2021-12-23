@@ -4,7 +4,10 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
-import java.util.*
+
+/**
+ * Entities for the Roomdatabase
+ */
 
 @Entity
 @Parcelize
@@ -16,3 +19,15 @@ data class Painting constructor(
 
     val image: String
 ) : Parcelable
+
+@Entity
+data class ArtPieceData constructor(
+
+    @PrimaryKey
+    val id: Long,
+
+    val title: String,
+
+    val primaryImage: String
+
+)

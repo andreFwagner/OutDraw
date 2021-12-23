@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.android.outdraw.gallery.GalleryViewModel" />
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
@@ -31,22 +34,22 @@
         <TextView
             android:id="@+id/home_welcome_text"
             android:layout_width="300dp"
-            android:layout_height="160dp"
+            android:layout_height="150dp"
             android:layout_marginStart="16dp"
             android:background="@drawable/text_bg"
-            android:fontFamily="@font/annie_use_your_telescope"
+            android:fontFamily="@font/delius"
             android:includeFontPadding="false"
             android:paddingStart="40dp"
-            android:paddingTop="23dp"
-            android:paddingEnd="17dp"
+            android:paddingTop="28dp"
+            android:paddingEnd="20dp"
             android:paddingBottom="10dp"
             android:rotation="-10"
             android:text="@string/welcome_text"
             android:textColor="@color/secondaryTextColor"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/home_about" />
+
 
         <Button
             android:id="@+id/home_start_button"
@@ -55,11 +58,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/annie_use_your_telescope"
+            android:fontFamily="@font/delius"
             android:text="@string/start_button"
             android:textColor="@color/primaryTextColor"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,6 +88,91 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:tint="@color/primaryTextColor" />
 
+
+        <TextView
+            android:id="@+id/home_gallery_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="-24dp"
+            android:fontFamily="@font/delius"
+            android:rotation="-26"
+            android:rotationX="11"
+            android:rotationY="8"
+            android:text="@string/gallery_text"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="@+id/home_gallery_button"
+            app:layout_constraintEnd_toStartOf="@+id/home_gallery_button"
+            app:layout_constraintTop_toTopOf="@+id/home_gallery_button"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <FrameLayout
+            android:id="@+id/home_about_frame"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0"
+            android:background="@color/generalBackground"
+            android:translationZ="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/home_about_textview_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/delius"
+                    android:text="@string/about_text"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.20" />
+
+                <TextView
+                    android:id="@+id/home_about_textview_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/delius"
+                    android:text="@string/about_text2"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/home_about_textview_1" />
+
+                <ImageView
+                    android:id="@+id/home_art_view"
+                    android:layout_width="250dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="8dp"
+                    android:alpha="1"
+                    android:rotation="-10"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/home_about_textview_2"
+                    app:layout_constraintVertical_bias="0.25"
+                    tools:srcCompat="@color/secondaryDarkColor" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/home_about"
             android:layout_width="wrap_content"
@@ -93,29 +180,13 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:clickable="true"
+            android:translationZ="20dp"
             app:backgroundTint="@color/primaryColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_help"
             app:tint="@color/primaryTextColor" />
 
-        <TextView
-            android:id="@+id/home_gallery_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="-16dp"
-            android:fontFamily="@font/annie_use_your_telescope"
-            android:rotation="-26"
-            android:rotationX="11"
-            android:rotationY="8"
-            android:text="@string/gallery_text"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/home_gallery_button"
-            app:layout_constraintEnd_toStartOf="@+id/home_gallery_button"
-            app:layout_constraintTop_toTopOf="@+id/home_gallery_button"
-            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
