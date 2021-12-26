@@ -56,13 +56,13 @@ class DetailFragment : BaseFragment() {
             AlertDialog.Builder(activity)
                 .setMessage(R.string.delete_dialog)
                 .setPositiveButton(
-                    "yes",
+                    R.string.delete_dialog_yes,
                     DialogInterface.OnClickListener { dialog, which ->
                         _viewModel.deletePainting(painting)
                     }
                 )
                 .setNegativeButton(
-                    "no",
+                    R.string.delete_dialog_no,
                     DialogInterface.OnClickListener { dialog, which ->
                         dialog.cancel()
                     }
