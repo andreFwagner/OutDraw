@@ -1,11 +1,11 @@
 # OutDraw
-a drawing app to push you out of your comfort zone
+a drawing app that pushes you out of your comfort zone
 
 
 
 ## Screenshots
 
-![Screenshot0](screenshots/home.png) ![Screenshot1](screenshots/paint2.jpg)
+![Screenshot0](screenshots/screens.jpg)
 
 
 
