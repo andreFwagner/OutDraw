@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 /**
- * Roomdatabase to save Paintings from the App and ArtPieces from the API
+ * Room-Database to save Paintings from the App and ArtPieces from the API
  */
 @Database(entities = [Painting::class, ArtPieceData::class], version = 1)
 abstract class Database : RoomDatabase() {
@@ -17,7 +17,7 @@ abstract class Database : RoomDatabase() {
 object LocalDB {
 
     /**
-     * static method that creates a reminder class and returns the DAO of the reminder
+     * static method that creates a database class and returns the DAO of it
      */
     fun createDatabaseDao(context: Context): DatabaseDao {
         return Room.databaseBuilder(

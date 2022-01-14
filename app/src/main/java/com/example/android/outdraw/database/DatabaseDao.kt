@@ -3,7 +3,7 @@ package com.example.android.outdraw.database
 import androidx.room.*
 
 /**
- * Dao for the Roomdatabase
+ * Dao for the Room-Database
  */
 
 @Dao

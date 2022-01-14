@@ -15,8 +15,8 @@ import com.example.android.outdraw.R
 import com.example.android.outdraw.databinding.FragmentHomeBinding
 import com.example.android.outdraw.gallery.GalleryViewModel
 import com.example.android.outdraw.utils.bindArtPiece
-import com.udacity.project4.base.BaseFragment
-import com.udacity.project4.base.NavigationCommand
+import com.example.android.outdraw.base.BaseFragment
+import com.example.android.outdraw.base.NavigationCommand
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**

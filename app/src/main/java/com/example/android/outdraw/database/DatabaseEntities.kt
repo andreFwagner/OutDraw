@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 /**
- * Entities for the Roomdatabase
+ * Entities for the Room-Database
  */
 
 @Entity

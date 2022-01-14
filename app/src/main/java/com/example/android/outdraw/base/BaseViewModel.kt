@@ -1,4 +1,4 @@
-package com.udacity.project4.base
+package com.example.android.outdraw.base
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -17,5 +17,4 @@ abstract class BaseViewModel(app: Application) : AndroidViewModel(app) {
     val showToast: SingleLiveEvent<String> = SingleLiveEvent()
     val showLoading: SingleLiveEvent<Boolean> = SingleLiveEvent()
     val showNoData: MutableLiveData<Boolean> = MutableLiveData()
-
 }

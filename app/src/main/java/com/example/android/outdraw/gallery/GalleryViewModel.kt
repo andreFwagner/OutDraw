@@ -13,8 +13,8 @@ import com.example.android.outdraw.database.ArtPieceData
 import com.example.android.outdraw.database.Painting
 import com.example.android.outdraw.network.ArtApi
 import com.example.android.outdraw.repository.Repository
-import com.udacity.project4.base.BaseViewModel
-import com.udacity.project4.base.NavigationCommand
+import com.example.android.outdraw.base.BaseViewModel
+import com.example.android.outdraw.base.NavigationCommand
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking

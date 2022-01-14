@@ -1,4 +1,4 @@
-package com.udacity.project4.base
+package com.example.android.outdraw.base
 
 import androidx.navigation.NavDirections
 

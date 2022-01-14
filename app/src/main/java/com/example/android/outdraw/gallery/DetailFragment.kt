@@ -11,12 +11,12 @@ import androidx.core.net.toUri
 import com.example.android.outdraw.R
 import com.example.android.outdraw.database.Painting
 import com.example.android.outdraw.databinding.FragmentDetailBinding
-import com.udacity.project4.base.BaseFragment
-import com.udacity.project4.base.NavigationCommand
+import com.example.android.outdraw.base.BaseFragment
+import com.example.android.outdraw.base.NavigationCommand
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
- * DetailFragment handling the Navigation and ShareIntent of teh DetailScreen
+ * DetailFragment handling the Navigation and ShareIntent of the DetailScreen
  */
 
 class DetailFragment : BaseFragment() {
