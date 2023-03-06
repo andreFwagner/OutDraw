@@ -1,6 +1,8 @@
 # OutDraw
+<br />
 a drawing app that pushes you out of your comfort zone
 
+<br /><br /><br />
 
 
 ## Screenshots
