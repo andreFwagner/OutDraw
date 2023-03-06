@@ -5,7 +5,7 @@ a drawing app that pushes you out of your comfort zone
 
 ## Screenshots
 
-![Screenshot0](screenshots/screens4git.png)
+![Screenshot0](screenshots/screens4git.jpg)
 
 
 
