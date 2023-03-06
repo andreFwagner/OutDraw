@@ -16,7 +16,7 @@ import com.udacity.project4.base.NavigationCommand
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
- * DetailFragment handling the Navigation and ShareIntent of teh DetailScreen
+ * DetailFragment handling the Navigation and ShareIntent of the DetailScreen
  */
 
 class DetailFragment : BaseFragment() {

@@ -1,6 +1,5 @@
 package com.example.android.outdraw.paint
 
-import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
@@ -29,7 +28,7 @@ class PaintFragment : BaseFragment() {
     override val _viewModel: GalleryViewModel by viewModel()
     private lateinit var binding: FragmentPaintBinding
     private lateinit var myCanvasView: MyCanvasView
-    private var animationSet = AnimatorSet()
+    private var animator = ObjectAnimator()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +37,9 @@ class PaintFragment : BaseFragment() {
     ): View? {
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_paint, container, false
+            R.layout.fragment_paint,
+            container,
+            false
         )
 
         // Locks Orientation's otherwise drawing gets distorted
@@ -74,7 +75,8 @@ class PaintFragment : BaseFragment() {
             clearCanvas()
         } else {
             requestPermissions(
-                arrayOf<String>(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUEST_STORAGE_PERMISSION
+                arrayOf<String>(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                REQUEST_STORAGE_PERMISSION
             )
         }
     }
@@ -90,7 +92,8 @@ class PaintFragment : BaseFragment() {
         } else {
             _viewModel.showToast.value = "Storage Permission is needed to save your paintings!"
             requestPermissions(
-                arrayOf<String>(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUEST_STORAGE_PERMISSION
+                arrayOf<String>(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                REQUEST_STORAGE_PERMISSION
             )
         }
     }
@@ -111,17 +114,13 @@ class PaintFragment : BaseFragment() {
     }
 
     fun fadeUIIn() {
-        animationSet.cancel()
-        animationSet = AnimatorSet()
-        val backButtonAnimator = ObjectAnimator.ofFloat(binding.paintBackButton, View.ALPHA, 0.7f)
-        val saveButtonAnimator = ObjectAnimator.ofFloat(binding.paintSaveButton, View.ALPHA, 0.7f)
-        val clearButtonAnimator = ObjectAnimator.ofFloat(binding.paintClearButton, View.ALPHA, 0.7f)
-        animationSet.playTogether(backButtonAnimator, saveButtonAnimator, clearButtonAnimator)
-        animationSet.duration = 1000
-        animationSet.startDelay = 1000
-        animationSet.start()
+        animator.cancel()
+        animator = ObjectAnimator.ofFloat(binding.paintControlCard, View.TRANSLATION_Y, 0f)
+        animator.duration = 700
+        animator.startDelay = 800
+        animator.start()
 
-        animationSet.doOnEnd {
+        animator.doOnEnd {
             binding.paintBackButton.isClickable = true
             binding.paintSaveButton.isClickable = true
             binding.paintClearButton.isClickable = true
@@ -129,14 +128,10 @@ class PaintFragment : BaseFragment() {
     }
 
     fun fadeUIOut() {
-        animationSet.cancel()
-        animationSet = AnimatorSet()
-        val backButtonAnimator = ObjectAnimator.ofFloat(binding.paintBackButton, View.ALPHA, 0.0f)
-        val saveButtonAnimator = ObjectAnimator.ofFloat(binding.paintSaveButton, View.ALPHA, 0.0f)
-        val clearButtonAnimator = ObjectAnimator.ofFloat(binding.paintClearButton, View.ALPHA, 0.0f)
-        animationSet.playTogether(backButtonAnimator, saveButtonAnimator, clearButtonAnimator)
-        animationSet.duration = 500
-        animationSet.start()
+        animator.cancel()
+        animator = ObjectAnimator.ofFloat(binding.paintControlCard, View.TRANSLATION_Y, 220f)
+        animator.duration = 350
+        animator.start()
 
         binding.paintBackButton.isClickable = false
         binding.paintSaveButton.isClickable = false

@@ -32,7 +32,7 @@ fun bindArtPiece(imgView: ImageView, imgPath: String?) {
             .load(imgPath)
             .apply(
                 RequestOptions()
-                    .error(R.drawable.back_3_1_wide)
+                    .error(R.drawable.background)
             )
             .into(imgView)
     }
