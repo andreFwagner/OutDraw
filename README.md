@@ -6,7 +6,8 @@ a drawing app that pushes you out of your comfort zone
 
 
 ## Screenshots
-<br />
+<br/>
+
 ![Screenshot0](screenshots/screens4git.jpg)
 
 <br /><br /><br />
