@@ -21,9 +21,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * PaintFragment loading MyCanvasView to paint, handling Navigation and Animation of UI and checks Permissions for saving
  */
 
-class PaintFragment : BaseFragment() {
+const val REQUEST_STORAGE_PERMISSION = 1
 
-    private val REQUEST_STORAGE_PERMISSION = 1
+class PaintFragment : BaseFragment() {
 
     override val _viewModel: GalleryViewModel by viewModel()
     private lateinit var binding: FragmentPaintBinding
@@ -34,7 +34,7 @@ class PaintFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_paint,
@@ -80,7 +80,7 @@ class PaintFragment : BaseFragment() {
             clearCanvas()
         } else {
             requestPermissions(
-                arrayOf<String>(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
                 REQUEST_STORAGE_PERMISSION
             )
         }
@@ -92,12 +92,12 @@ class PaintFragment : BaseFragment() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_STORAGE_PERMISSION && grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        if (requestCode == REQUEST_STORAGE_PERMISSION && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             checkPermissionsBeforeSave()
         } else {
             _viewModel.showToast.value = "Storage Permission is needed to save your paintings!"
             requestPermissions(
-                arrayOf<String>(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
                 REQUEST_STORAGE_PERMISSION
             )
         }

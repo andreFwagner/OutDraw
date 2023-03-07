@@ -12,6 +12,7 @@
         <item name="colorSecondaryVariant">@color/light_rosa</item>
         <item name="colorOnSecondary">@color/primaryTextColor</item>
         <!-- Status bar color. -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <!-- Customize your theme here. -->
     </style>
