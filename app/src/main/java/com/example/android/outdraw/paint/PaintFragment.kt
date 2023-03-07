@@ -61,7 +61,12 @@ class PaintFragment : BaseFragment() {
         }
 
         binding.paintSaveButton.setOnClickListener {
-            checkPermissionsBeforeSave()
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+                _viewModel.savePainting(myCanvasView.saveBitmap())
+                clearCanvas()
+            } else {
+                checkPermissionsBeforeSave()
+            }
         }
 
         binding.paintClearButton.setOnClickListener {
