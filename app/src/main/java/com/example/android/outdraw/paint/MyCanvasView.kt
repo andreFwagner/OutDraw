@@ -2,16 +2,17 @@ package com.example.android.outdraw.paint
 
 import android.content.Context
 import android.graphics.*
+import android.net.Uri
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
+import androidx.core.content.FileProvider.getUriForFile
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.findFragment
 import com.example.android.outdraw.R
 import java.io.File
 import java.io.FileOutputStream
-import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.abs
@@ -120,14 +121,18 @@ class MyCanvasView(context: Context) : View(context) {
     fun saveBitmap(): String {
         val format = SimpleDateFormat("dd-M-yyy-hh-mm-ss")
         val date = format.format(Date())
-        val file = File(context.getExternalFilesDir(null).toString() + "/painting-$date.png")
+        val imagePath = File(context.getExternalFilesDir(null), "/")
+        val newFile = File(imagePath, "painting-$date.png")
 
         try {
-            extraBitmap.compress(Bitmap.CompressFormat.PNG, 100, FileOutputStream(file))
+            extraBitmap.compress(Bitmap.CompressFormat.PNG, 100, FileOutputStream(newFile))
         } catch (e: Exception) {
             Log.e(null, "Error Saving Bitmap: $e")
         }
 
-        return file.path.toString()
+        val contentUri: Uri = getUriForFile(context, "com.example.android.outdraw.fileprovider", newFile)
+        Log.d("MyCanvasView", "uri: $contentUri")
+
+        return contentUri.toString()
     }
 }

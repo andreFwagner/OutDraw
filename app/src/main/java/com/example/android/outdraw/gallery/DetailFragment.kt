@@ -2,11 +2,12 @@ package com.example.android.outdraw.gallery
 
 import android.app.AlertDialog
 import android.content.ActivityNotFoundException
+import android.content.ClipData
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
-import androidx.core.app.ShareCompat
 import androidx.core.net.toUri
 import com.example.android.outdraw.R
 import com.example.android.outdraw.database.Painting
@@ -72,14 +73,17 @@ class DetailFragment : BaseFragment() {
     }
 
     private fun onShare() {
-        val shareIntent = ShareCompat.IntentBuilder.from(requireActivity())
-            .setType("image/*")
-            .setText(getString(R.string.share_text))
-            .setStream(painting.image.toUri())
-            .intent
+        Log.d("DetailFragment", "uri: ${painting.image.toUri()}")
+
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "image/*"
+        intent.clipData = ClipData.newRawUri("", painting.image.toUri())
+        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text))
+        intent.putExtra(Intent.EXTRA_STREAM, painting.image.toUri())
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
 
         try {
-            startActivity(Intent.createChooser(shareIntent, getString(R.string.share_where)))
+            startActivity(Intent.createChooser(intent, getString(R.string.share_where)))
         } catch (ex: ActivityNotFoundException) {
             _viewModel.showToast.value = getString(R.string.sharing_failed)
         }
