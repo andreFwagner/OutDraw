@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:scaleX="1.17"
             android:scaleY="1.17"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -34,7 +34,7 @@
             app:srcCompat="@drawable/background" />
 
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/home_start_button"
             android:layout_width="0dp"
             android:layout_height="70dp"
@@ -46,28 +46,33 @@
             android:textAllCaps="false"
             android:textColor="@color/primaryTextColor"
             android:textSize="12sp"
-            app:backgroundTint="@color/light_blue"
+            android:elevation="3dp"
+            app:backgroundTint="@null"
+            android:background="@drawable/button_bg_blue"
             app:cornerRadius="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/home_gallery_button"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:insetBottom="0dp"
+            android:insetTop="0dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:text="@string/gallery_text"
+            android:elevation="3dp"
             android:textAllCaps="false"
             android:textSize="12sp"
-            app:backgroundTint="@color/light_green"
-            app:cornerRadius="55dp"
+            app:backgroundTint="@null"
+            android:background="@drawable/button_bg_green"
+            app:cornerRadius="50dp"
             app:layout_constraintBottom_toTopOf="@+id/home_start_button"
             app:layout_constraintEnd_toEndOf="@+id/home_start_button"
             app:layout_constraintTop_toBottomOf="@+id/home_about"
             app:layout_constraintVertical_bias="0.74" />
-
 
         <FrameLayout
             android:id="@+id/home_about_frame"
@@ -139,7 +144,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/home_about"
             android:layout_width="80dp"
             android:layout_height="55dp"
@@ -147,8 +152,10 @@
             android:text="@string/about_button_text"
             android:textAllCaps="false"
             android:textSize="12sp"
+            android:elevation="3dp"
             android:translationZ="4dp"
-            app:backgroundTint="@color/primaryColor"
+            app:backgroundTint="@null"
+            android:background="@drawable/button_bg_red"
             app:cornerRadius="100dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

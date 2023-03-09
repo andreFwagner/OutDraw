@@ -14,4 +14,5 @@
     <color name="green">#B2EFE0</color>
     <color name="light_rosa">#F6DADA</color>
     <color name="rosa">#F4B6B6</color>
+    <color name="button_stroke_color">#575757</color>
 </resources>
