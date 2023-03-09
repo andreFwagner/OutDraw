@@ -1,23 +1,27 @@
 # OutDraw
+<br />
 a drawing app that pushes you out of your comfort zone
 
+<br /><br /><br />
 
 
 ## Screenshots
+<br/>
 
-![Screenshot0](screenshots/screens.jpg)
+![Screenshot0](screenshots/screens4git.jpg)
 
-
+<br /><br /><br />
 
 
 ## Report Issues
+<br />
 Notice any issues with a repository? Please file a GitHub issue in the repository.
 
-
+<br /><br /><br />
 
 
 ## License
-
+<br />
 Copyright (c) 2021 André Wagner
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

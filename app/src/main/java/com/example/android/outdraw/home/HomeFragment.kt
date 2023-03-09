@@ -74,12 +74,12 @@ class HomeFragment : BaseFragment() {
             val anim = ObjectAnimator.ofFloat(binding.homeAboutFrame, View.ALPHA, 0.9f)
             anim.duration = 400
             anim.start()
-            binding.homeAbout.setImageResource(R.drawable.ic_clear)
+            binding.homeAbout.text = getString(R.string.back_button_text)
         } else if (binding.homeAboutFrame?.alpha == 0.9f) {
             val anim = ObjectAnimator.ofFloat(binding.homeAboutFrame, View.ALPHA, 0.0f)
             anim.duration = 400
             anim.start()
-            binding.homeAbout.setImageResource(android.R.drawable.ic_menu_help)
+            binding.homeAbout.text = getString(R.string.about_button_text)
         }
     }
 
@@ -89,17 +89,6 @@ class HomeFragment : BaseFragment() {
         anim.start()
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-
-        // Checks the orientation of the screen
-        if (newConfig.orientation === Configuration.ORIENTATION_LANDSCAPE) {
-            // sets the background to a wider version of the image
-            binding.homeBackground.setImageResource(R.drawable.back_3_1_wide)
-        } else if (newConfig.orientation === Configuration.ORIENTATION_PORTRAIT) {
-            binding.homeBackground.setImageResource(R.drawable.back_3_1)
-        }
-    }
 
     private fun navigateTo(direction: NavDirections) {
         val listener = object : MotionLayout.TransitionListener {
