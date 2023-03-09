@@ -15,8 +15,8 @@ import com.example.android.outdraw.R
 import com.example.android.outdraw.databinding.FragmentHomeBinding
 import com.example.android.outdraw.gallery.GalleryViewModel
 import com.example.android.outdraw.utils.bindArtPiece
-import com.example.android.outdraw.base.BaseFragment
 import com.example.android.outdraw.base.NavigationCommand
+import com.udacity.project4.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -63,19 +63,19 @@ class HomeFragment : BaseFragment() {
             viewLifecycleOwner,
             Observer {
                 if (it != null) {
-                    bindArtPiece(binding.homeArtView!!, it.primaryImage)
+                    bindArtPiece(binding.homeArtView, it.primaryImage)
                 }
             }
         )
     }
 
     private fun fadeAbout() {
-        if (binding.homeAboutFrame?.alpha == 0.0f) {
+        if (binding.homeAboutFrame.alpha == 0.0f) {
             val anim = ObjectAnimator.ofFloat(binding.homeAboutFrame, View.ALPHA, 0.9f)
             anim.duration = 400
             anim.start()
             binding.homeAbout.text = getString(R.string.back_button_text)
-        } else if (binding.homeAboutFrame?.alpha == 0.9f) {
+        } else if (binding.homeAboutFrame.alpha == 0.9f) {
             val anim = ObjectAnimator.ofFloat(binding.homeAboutFrame, View.ALPHA, 0.0f)
             anim.duration = 400
             anim.start()

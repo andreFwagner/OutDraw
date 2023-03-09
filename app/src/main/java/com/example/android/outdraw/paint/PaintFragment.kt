@@ -13,8 +13,8 @@ import androidx.databinding.DataBindingUtil
 import com.example.android.outdraw.R
 import com.example.android.outdraw.databinding.FragmentPaintBinding
 import com.example.android.outdraw.gallery.GalleryViewModel
-import com.example.android.outdraw.base.BaseFragment
 import com.example.android.outdraw.base.NavigationCommand
+import com.udacity.project4.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**

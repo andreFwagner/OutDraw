@@ -57,10 +57,10 @@ class GalleryViewModel(val app: Application, private val repository: Repository)
         viewModelScope.launch {
             try {
                 val allArt = ArtApi.retrofitService.getAllArt()
-                allArt?.let { it1 ->
+                allArt.let { it1 ->
                     val index = Random.nextInt(0, it1.objectIDs.size)
                     val piece = ArtApi.retrofitService.getArt(it1.objectIDs[index])
-                    piece?.let { it2 ->
+                    piece.let { it2 ->
                         val imgUri = it2.primaryImage.toUri().buildUpon().scheme("https").build()
                         repository.saveArtPiece(ArtPieceData(1, it2.title, loadArt(imgUri, it2.title)))
                         _artPiece.value = repository.updateArtPiece()

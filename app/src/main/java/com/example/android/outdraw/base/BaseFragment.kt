@@ -4,6 +4,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.android.outdraw.base.BaseViewModel
+import com.example.android.outdraw.base.NavigationCommand
 import com.google.android.material.snackbar.Snackbar
 
 /**

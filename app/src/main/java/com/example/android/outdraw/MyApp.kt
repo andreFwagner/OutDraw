@@ -26,7 +26,7 @@ class MyApp : Application() {
                     get() as Repository
                 )
             }
-            single { Repository(get()) as Repository }
+            single { Repository(get()) }
             single { LocalDB.createDatabaseDao(this@MyApp) }
         }
 

@@ -12,8 +12,8 @@ import androidx.core.net.toUri
 import com.example.android.outdraw.R
 import com.example.android.outdraw.database.Painting
 import com.example.android.outdraw.databinding.FragmentDetailBinding
-import com.example.android.outdraw.base.BaseFragment
 import com.example.android.outdraw.base.NavigationCommand
+import com.udacity.project4.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -58,13 +58,13 @@ class DetailFragment : BaseFragment() {
                 .setMessage(R.string.delete_dialog)
                 .setPositiveButton(
                     R.string.delete_dialog_yes,
-                    DialogInterface.OnClickListener { dialog, which ->
+                    DialogInterface.OnClickListener { _, _ ->
                         _viewModel.deletePainting(painting)
                     }
                 )
                 .setNegativeButton(
                     R.string.delete_dialog_no,
-                    DialogInterface.OnClickListener { dialog, which ->
+                    DialogInterface.OnClickListener { dialog, _ ->
                         dialog.cancel()
                     }
                 )
