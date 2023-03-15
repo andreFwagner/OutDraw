@@ -38,9 +38,6 @@ class HomeFragment : BaseFragment() {
             R.layout.fragment_home, container, false
         )
 
-        // unlocks Orientation in case you come from PaintingFragment
-        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_USER
-
         return binding.root
     }
 

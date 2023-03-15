@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.android.outdraw.gallery.GalleryViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/detail_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/light_green"
+            android:clipToPadding="false"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/detail_delete_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@android:color/transparent"
+                android:paddingStart="8dp"
+                android:paddingTop="55dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="24dp"
+                android:src="@drawable/round_delete_24"
+                app:tint="@color/secondaryTextColor"
+                tools:layout_editor_absoluteX="363dp"
+                tools:layout_editor_absoluteY="4dp" />
+
+            <ImageButton
+                android:id="@+id/detail_share_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@android:color/transparent"
+                android:paddingStart="8dp"
+                android:paddingTop="55dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="24dp"
+                android:src="@drawable/ic_share"
+                android:tint="@color/secondaryTextColor"
+                tools:layout_editor_absoluteX="315dp"
+                tools:layout_editor_absoluteY="4dp" />
+
+            <ImageButton
+                android:id="@+id/detail_back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:background="@android:color/transparent"
+                android:paddingStart="0dp"
+                android:paddingTop="55dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="24dp"
+                android:src="@drawable/round_arrow_back_24"
+                app:tint="@color/secondaryTextColor"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="8dp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/detail_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:scaleType="fitCenter"
+            app:imagePath="@{viewModel.selectedPainting.image}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_toolbar"
+            app:layout_constraintVertical_bias="1.0"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

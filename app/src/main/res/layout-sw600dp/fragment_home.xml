@@ -27,24 +27,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/background" />
+            app:srcCompat="@drawable/background_large" />
 
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/home_start_button"
             android:layout_width="0dp"
             android:layout_height="70dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp"
             android:layout_marginBottom="64dp"
+            android:background="@drawable/button_bg_blue"
+            android:elevation="3dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/start_button"
             android:textAllCaps="false"
             android:textColor="@color/primaryTextColor"
             android:textSize="12sp"
-            android:elevation="3dp"
             app:backgroundTint="@null"
-            android:background="@drawable/button_bg_blue"
             app:cornerRadius="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -86,8 +86,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/generalBackground">
+                android:layout_height="wrap_content">
 
 
                 <TextView

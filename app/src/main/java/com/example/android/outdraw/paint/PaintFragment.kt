@@ -1,7 +1,6 @@
 package com.example.android.outdraw.paint
 
 import android.animation.ObjectAnimator
-import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,9 +10,9 @@ import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.android.outdraw.R
+import com.example.android.outdraw.base.NavigationCommand
 import com.example.android.outdraw.databinding.FragmentPaintBinding
 import com.example.android.outdraw.gallery.GalleryViewModel
-import com.example.android.outdraw.base.NavigationCommand
 import com.udacity.project4.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -41,9 +40,6 @@ class PaintFragment : BaseFragment() {
             container,
             false
         )
-
-        // Locks Orientation's otherwise drawing gets distorted
-        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LOCKED
 
         myCanvasView = MyCanvasView(requireContext())
         myCanvasView.contentDescription = getString(R.string.canvasContentDescription)
