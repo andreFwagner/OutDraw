@@ -105,7 +105,7 @@ class PaintFragment : BaseFragment() {
 
     private fun clearCanvas() {
         val clearCanvasAnimation = ObjectAnimator.ofFloat(myCanvasView, View.ALPHA, 0.0f)
-        clearCanvasAnimation.duration = 1000
+        clearCanvasAnimation.duration = 500
         clearCanvasAnimation.start()
 
         clearCanvasAnimation.doOnEnd {
