@@ -3,17 +3,15 @@ package com.example.android.outdraw.gallery
 import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.ClipData
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.*
+import android.view.* // ktlint-disable no-wildcard-imports
 import androidx.core.net.toUri
 import com.example.android.outdraw.R
+import com.example.android.outdraw.base.BaseFragment
+import com.example.android.outdraw.base.NavigationCommand
 import com.example.android.outdraw.database.Painting
 import com.example.android.outdraw.databinding.FragmentDetailBinding
-import com.example.android.outdraw.base.NavigationCommand
-import com.udacity.project4.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -30,7 +28,7 @@ class DetailFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetailBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = _viewModel
@@ -57,24 +55,20 @@ class DetailFragment : BaseFragment() {
             AlertDialog.Builder(activity)
                 .setMessage(R.string.delete_dialog)
                 .setPositiveButton(
-                    R.string.delete_dialog_yes,
-                    DialogInterface.OnClickListener { _, _ ->
-                        _viewModel.deletePainting(painting)
-                    }
-                )
+                    R.string.delete_dialog_yes
+                ) { _, _ ->
+                    _viewModel.deletePainting(painting)
+                }
                 .setNegativeButton(
-                    R.string.delete_dialog_no,
-                    DialogInterface.OnClickListener { dialog, _ ->
-                        dialog.cancel()
-                    }
-                )
+                    R.string.delete_dialog_no
+                ) { dialog, _ ->
+                    dialog.cancel()
+                }
                 .create().show()
         }
     }
 
     private fun onShare() {
-        Log.d("DetailFragment", "uri: ${painting.image.toUri()}")
-
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "image/*"
         intent.clipData = ClipData.newRawUri("", painting.image.toUri())

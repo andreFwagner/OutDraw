@@ -29,7 +29,7 @@ import com.example.android.outdraw.databinding.GridViewItemBinding
  * ListAdapter and ViewHolder for RecyclerView
  */
 
-class PhotoGridAdapter(val onClickListener: OnClickListener) : ListAdapter<Painting, PhotoGridAdapter.PaintingViewHolder>(DiffCallback) {
+class PhotoGridAdapter(private val onClickListener: OnClickListener) : ListAdapter<Painting, PhotoGridAdapter.PaintingViewHolder>(DiffCallback) {
     companion object DiffCallback : DiffUtil.ItemCallback<Painting>() {
         override fun areItemsTheSame(oldItem: Painting, newItem: Painting): Boolean {
             return oldItem === newItem
@@ -40,11 +40,11 @@ class PhotoGridAdapter(val onClickListener: OnClickListener) : ListAdapter<Paint
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoGridAdapter.PaintingViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaintingViewHolder {
         return PaintingViewHolder(GridViewItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
-    override fun onBindViewHolder(holder: PhotoGridAdapter.PaintingViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PaintingViewHolder, position: Int) {
         val painting = getItem(position)
         holder.bind(painting)
         holder.itemView.setOnClickListener {

@@ -1,7 +1,5 @@
 package com.example.android.outdraw.network
 
-import com.example.android.outdraw.database.ArtPieceData
-
 /**
  * Data Class to load ARTPieces from the API
  */
@@ -19,11 +17,3 @@ data class AllArt(
 
     val objectIDs: List<Int>
 )
-
-fun ArtPiece.asDatabaseModel(): ArtPieceData {
-    return ArtPieceData(
-        id = 1,
-        title = this.title,
-        primaryImage = this.primaryImage
-    )
-}

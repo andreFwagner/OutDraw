@@ -31,7 +31,7 @@
                 android:id="@+id/gallery_back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
+                android:layout_gravity="start"
                 android:background="@android:color/transparent"
                 android:paddingStart="0dp"
                 android:paddingTop="55dp"
@@ -40,7 +40,8 @@
                 android:src="@drawable/round_arrow_back_24"
                 app:tint="@color/secondaryTextColor"
                 tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="8dp" />
+                tools:layout_editor_absoluteY="8dp"
+                tools:ignore="ContentDescription" />
 
         </androidx.appcompat.widget.Toolbar>
 

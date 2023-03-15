@@ -1,5 +1,6 @@
 package com.example.android.outdraw.repository
 
+import android.util.Log
 import com.example.android.outdraw.database.ArtPieceData
 import com.example.android.outdraw.database.DatabaseDao
 import com.example.android.outdraw.database.Painting
@@ -40,6 +41,7 @@ class Repository(private val databaseDao: DatabaseDao, private val ioDispatcher:
             try {
                 File(updateArtPiece()!!.primaryImage).delete()
             } catch (e: Exception) {
+                Log.e("Repository", "failed deleting old ArtPiece: $e")
             }
             databaseDao.saveArtPiece(artPieceData)
         }

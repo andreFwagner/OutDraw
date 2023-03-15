@@ -1,6 +1,6 @@
 package com.example.android.outdraw.database
 
-import androidx.room.*
+import androidx.room.* // ktlint-disable no-wildcard-imports
 
 /**
  * Dao for the Room-Database
@@ -18,8 +18,8 @@ interface DatabaseDao {
     @Delete
     fun delete(painting: Painting)
 
-    @Query("SELECT * FROM Painting where id = :paintingId")
-    fun getPaintingById(paintingId: Long): Painting?
+//    @Query("SELECT * FROM Painting where id = :paintingId")
+//    fun getPaintingById(paintingId: Long): Painting?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveArtPiece(artPieceData: ArtPieceData)

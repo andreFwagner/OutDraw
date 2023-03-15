@@ -1,7 +1,8 @@
 package com.example.android.outdraw.paint
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.*
+import android.graphics.* // ktlint-disable no-wildcard-imports
 import android.net.Uri
 import android.util.Log
 import android.view.MotionEvent
@@ -26,7 +27,7 @@ private const val STROKE_WIDTH = 12f
 
 class MyCanvasView(context: Context) : View(context) {
 
-    lateinit var extraCanvas: Canvas
+    private lateinit var extraCanvas: Canvas
     private lateinit var extraBitmap: Bitmap
 
     private val touchTolerance = ViewConfiguration.get(context).scaledTouchSlop
@@ -92,6 +93,7 @@ class MyCanvasView(context: Context) : View(context) {
         paint.setARGB(255, random2.nextInt(256), random2.nextInt(256), random2.nextInt(256))
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         motionTouchEventX = event.x
         motionTouchEventY = event.y
@@ -118,6 +120,7 @@ class MyCanvasView(context: Context) : View(context) {
         canvas.drawBitmap(extraBitmap, 0f, 0f, null)
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun saveBitmap(): String {
         val format = SimpleDateFormat("dd-M-yyy-hh-mm-ss")
         val date = format.format(Date())

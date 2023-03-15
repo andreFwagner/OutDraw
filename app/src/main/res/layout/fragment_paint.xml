@@ -21,7 +21,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="VisualLintBounds">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -37,7 +38,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/round_arrow_back_24"
-                    app:tint="#575757" />
+                    app:tint="#575757"
+                    tools:ignore="ContentDescription" />
 
                 <ImageButton
                     android:id="@+id/paint_save_button"
@@ -49,7 +51,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/round_save_24"
-                    app:tint="#575757" />
+                    app:tint="#575757"
+                    tools:ignore="ContentDescription" />
 
                 <ImageButton
                     android:id="@+id/paint_clear_button"
@@ -61,7 +64,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/round_delete_24"
-                    app:tint="#575757" />
+                    app:tint="#575757"
+                    tools:ignore="ContentDescription" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>

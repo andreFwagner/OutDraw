@@ -27,7 +27,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/background" />
+            app:srcCompat="@drawable/background"
+            tools:ignore="ContentDescription" />
 
 
         <com.google.android.material.button.MaterialButton
@@ -37,33 +38,34 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="64dp"
+            android:background="@drawable/button_bg_blue"
+            android:elevation="3dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/start_button"
             android:textAllCaps="false"
             android:textColor="@color/primaryTextColor"
             android:textSize="12sp"
-            android:elevation="3dp"
             app:backgroundTint="@null"
-            android:background="@drawable/button_bg_blue"
             app:cornerRadius="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="VisualLintButtonSize" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/home_gallery_button"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:insetBottom="0dp"
-            android:insetTop="0dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
-            android:text="@string/gallery_text"
+            android:background="@drawable/button_bg_green"
             android:elevation="3dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/gallery_text"
             android:textAllCaps="false"
             android:textSize="12sp"
             app:backgroundTint="@null"
-            android:background="@drawable/button_bg_green"
             app:cornerRadius="50dp"
             app:layout_constraintBottom_toTopOf="@+id/home_start_button"
             app:layout_constraintEnd_toEndOf="@+id/home_start_button"
@@ -105,7 +107,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.20" />
+                    app:layout_constraintVertical_bias="0.20"
+                    tools:targetApi="o" />
 
                 <TextView
                     android:id="@+id/home_about_textview_2"
@@ -121,7 +124,8 @@
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/home_about_textview_1" />
+                    app:layout_constraintTop_toBottomOf="@+id/home_about_textview_1"
+                    tools:targetApi="o" />
 
                 <ImageView
                     android:id="@+id/home_art_view"
@@ -137,7 +141,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/home_about_textview_2" />
+                    app:layout_constraintTop_toBottomOf="@+id/home_about_textview_2"
+                    tools:ignore="ContentDescription" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
 
@@ -146,13 +151,13 @@
             android:layout_width="80dp"
             android:layout_height="55dp"
             android:layout_marginTop="64dp"
+            android:background="@drawable/button_bg_red"
+            android:elevation="3dp"
             android:text="@string/about_button_text"
             android:textAllCaps="false"
             android:textSize="12sp"
-            android:elevation="3dp"
             android:translationZ="4dp"
             app:backgroundTint="@null"
-            android:background="@drawable/button_bg_red"
             app:cornerRadius="100dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

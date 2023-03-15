@@ -1,22 +1,19 @@
 package com.example.android.outdraw.home
 
 import android.animation.ObjectAnimator
-import android.content.pm.ActivityInfo
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.navigation.NavDirections
 import com.example.android.outdraw.R
+import com.example.android.outdraw.base.BaseFragment
+import com.example.android.outdraw.base.NavigationCommand
 import com.example.android.outdraw.databinding.FragmentHomeBinding
 import com.example.android.outdraw.gallery.GalleryViewModel
 import com.example.android.outdraw.utils.bindArtPiece
-import com.example.android.outdraw.base.NavigationCommand
-import com.udacity.project4.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -32,10 +29,12 @@ class HomeFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_home, container, false
+            R.layout.fragment_home,
+            container,
+            false
         )
 
         return binding.root
@@ -57,13 +56,12 @@ class HomeFragment : BaseFragment() {
             navigateTo(HomeFragmentDirections.actionHomeFragmentToGalleryFragment())
         }
         _viewModel.artPiece.observe(
-            viewLifecycleOwner,
-            Observer {
-                if (it != null) {
-                    bindArtPiece(binding.homeArtView, it.primaryImage)
-                }
+            viewLifecycleOwner
+        ) {
+            if (it != null) {
+                bindArtPiece(binding.homeArtView, it.primaryImage)
             }
-        )
+        }
     }
 
     private fun fadeAbout() {
@@ -85,7 +83,6 @@ class HomeFragment : BaseFragment() {
         anim.duration = 300
         anim.start()
     }
-
 
     private fun navigateTo(direction: NavDirections) {
         val listener = object : MotionLayout.TransitionListener {

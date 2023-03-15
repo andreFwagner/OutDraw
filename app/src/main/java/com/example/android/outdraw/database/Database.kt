@@ -22,7 +22,8 @@ object LocalDB {
     fun createDatabaseDao(context: Context): DatabaseDao {
         return Room.databaseBuilder(
             context.applicationContext,
-            com.example.android.outdraw.database.Database::class.java, "paintings.db"
+            com.example.android.outdraw.database.Database::class.java,
+            "paintings.db"
         ).build().databaseDao()
     }
 }

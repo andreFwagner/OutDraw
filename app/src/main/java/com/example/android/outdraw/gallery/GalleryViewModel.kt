@@ -1,5 +1,6 @@
 package com.example.android.outdraw.gallery
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.graphics.Bitmap
 import android.net.Uri
@@ -9,12 +10,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.Glide
 import com.example.android.outdraw.R
+import com.example.android.outdraw.base.BaseViewModel
+import com.example.android.outdraw.base.NavigationCommand
 import com.example.android.outdraw.database.ArtPieceData
 import com.example.android.outdraw.database.Painting
 import com.example.android.outdraw.network.ArtApi
 import com.example.android.outdraw.repository.Repository
-import com.example.android.outdraw.base.BaseViewModel
-import com.example.android.outdraw.base.NavigationCommand
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -85,6 +86,7 @@ class GalleryViewModel(val app: Application, private val repository: Repository)
         return file.absolutePath
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun savePainting(path: String) {
         val format = SimpleDateFormat("yyy-M-dd")
         val date = format.format(Date())

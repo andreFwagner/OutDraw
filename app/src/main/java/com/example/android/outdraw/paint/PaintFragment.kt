@@ -10,10 +10,10 @@ import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.android.outdraw.R
+import com.example.android.outdraw.base.BaseFragment
 import com.example.android.outdraw.base.NavigationCommand
 import com.example.android.outdraw.databinding.FragmentPaintBinding
 import com.example.android.outdraw.gallery.GalleryViewModel
-import com.udacity.project4.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -70,6 +70,7 @@ class PaintFragment : BaseFragment() {
         }
     }
 
+    @Suppress("DEPRECATION")
     private fun checkPermissionsBeforeSave() {
         if (isPermissionGranted()) {
             _viewModel.savePainting(myCanvasView.saveBitmap())
@@ -82,16 +83,19 @@ class PaintFragment : BaseFragment() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
+        @Suppress("DEPRECATION")
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_STORAGE_PERMISSION && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             checkPermissionsBeforeSave()
         } else {
             _viewModel.showToast.value = "Storage Permission is needed to save your paintings!"
+            @Suppress("DEPRECATION")
             requestPermissions(
                 arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
                 REQUEST_STORAGE_PERMISSION

@@ -1,14 +1,14 @@
 package com.example.android.outdraw.gallery
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import com.example.android.outdraw.base.BaseFragment
+import com.example.android.outdraw.base.NavigationCommand
 import com.example.android.outdraw.databinding.FragmentGalleryBinding
 import com.example.android.outdraw.utils.PhotoGridAdapter
-import com.example.android.outdraw.base.NavigationCommand
-import com.udacity.project4.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -24,7 +24,7 @@ class GalleryFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentGalleryBinding.inflate(inflater)
         binding.viewmodel = _viewModel
         binding.galleryGrid.adapter = PhotoGridAdapter(
@@ -36,6 +36,7 @@ class GalleryFragment : BaseFragment() {
         return binding.root
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -48,17 +49,16 @@ class GalleryFragment : BaseFragment() {
         }
 
         _viewModel.navigateToSelectedPainting.observe(
-            viewLifecycleOwner,
-            Observer {
-                if (it != null) {
-                    _viewModel.navigationCommand.postValue(
-                        NavigationCommand.To(
-                            GalleryFragmentDirections.actionGalleryFragmentToDetailFragment(it)
-                        )
+            viewLifecycleOwner
+        ) {
+            if (it != null) {
+                _viewModel.navigationCommand.postValue(
+                    NavigationCommand.To(
+                        GalleryFragmentDirections.actionGalleryFragmentToDetailFragment(it)
                     )
-                    _viewModel.displayPaintingDetailComplete()
-                }
+                )
+                _viewModel.displayPaintingDetailComplete()
             }
-        )
+        }
     }
 }

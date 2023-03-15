@@ -38,6 +38,7 @@
                 android:cropToPadding="true"
                 android:scaleType="fitCenter"
                 app:imagePath="@{painting.image}"
+                tools:ignore="ContentDescription"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
         </com.google.android.material.card.MaterialCardView>

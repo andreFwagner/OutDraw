@@ -1,11 +1,8 @@
-package com.udacity.project4.base
+package com.example.android.outdraw.base
 
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.android.outdraw.base.BaseViewModel
-import com.example.android.outdraw.base.NavigationCommand
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -19,20 +16,30 @@ abstract class BaseFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        _viewModel.showErrorMessage.observe(this, Observer {
+        _viewModel.showErrorMessage.observe(
+            this
+        ) {
             Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
-        })
-        _viewModel.showToast.observe(this, Observer {
+        }
+        _viewModel.showToast.observe(
+            this
+        ) {
             Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
-        })
-        _viewModel.showSnackBar.observe(this, Observer {
+        }
+        _viewModel.showSnackBar.observe(
+            this
+        ) {
             Snackbar.make(this.requireView(), it, Snackbar.LENGTH_SHORT).show()
-        })
-        _viewModel.showSnackBarInt.observe(this, Observer {
+        }
+        _viewModel.showSnackBarInt.observe(
+            this
+        ) {
             Snackbar.make(this.requireView(), getString(it), Snackbar.LENGTH_SHORT).show()
-        })
+        }
 
-        _viewModel.navigationCommand.observe(this, Observer { command ->
+        _viewModel.navigationCommand.observe(
+            this
+        ) { command ->
             when (command) {
                 is NavigationCommand.To -> findNavController().navigate(command.directions)
                 is NavigationCommand.Back -> findNavController().popBackStack()
@@ -41,6 +48,6 @@ abstract class BaseFragment : Fragment() {
                     false
                 )
             }
-        })
+        }
     }
 }
