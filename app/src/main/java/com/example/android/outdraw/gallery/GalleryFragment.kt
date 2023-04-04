@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.android.outdraw.base.BaseFragment
 import com.example.android.outdraw.base.NavigationCommand
 import com.example.android.outdraw.databinding.FragmentGalleryBinding
@@ -23,14 +25,14 @@ class GalleryFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentGalleryBinding.inflate(inflater)
         binding.viewmodel = _viewModel
         binding.galleryGrid.adapter = PhotoGridAdapter(
             PhotoGridAdapter.OnClickListener {
                 _viewModel.getPaintingDetail(it)
-            }
+            },
         )
 
         return binding.root
@@ -45,18 +47,15 @@ class GalleryFragment : BaseFragment() {
         binding.galleryGrid.adapter?.notifyDataSetChanged()
 
         binding.galleryBackButton.setOnClickListener {
-            _viewModel.navigationCommand.postValue(NavigationCommand.Back)
+            findNavController().navigateUp()
         }
 
         _viewModel.navigateToSelectedPainting.observe(
-            viewLifecycleOwner
+            viewLifecycleOwner,
         ) {
             if (it != null) {
-                _viewModel.navigationCommand.postValue(
-                    NavigationCommand.To(
-                        GalleryFragmentDirections.actionGalleryFragmentToDetailFragment(it)
-                    )
-                )
+                findNavController()
+                    .navigate(GalleryFragmentDirections.actionGalleryFragmentToDetailFragment(it))
                 _viewModel.displayPaintingDetailComplete()
             }
         }

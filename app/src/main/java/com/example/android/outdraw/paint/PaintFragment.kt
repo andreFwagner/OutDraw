@@ -6,9 +6,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.android.outdraw.R
 import com.example.android.outdraw.base.BaseFragment
 import com.example.android.outdraw.base.NavigationCommand
@@ -32,13 +35,13 @@ class PaintFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_paint,
             container,
-            false
+            false,
         )
 
         myCanvasView = MyCanvasView(requireContext())
@@ -52,8 +55,12 @@ class PaintFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        activity?.onBackPressedDispatcher?.addCallback {
+            // nothing
+        }
+
         binding.paintBackButton.setOnClickListener {
-            _viewModel.navigationCommand.postValue(NavigationCommand.Back)
+            findNavController().navigateUp()
         }
 
         binding.paintSaveButton.setOnClickListener {
@@ -78,7 +85,7 @@ class PaintFragment : BaseFragment() {
         } else {
             requestPermissions(
                 arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                REQUEST_STORAGE_PERMISSION
+                REQUEST_STORAGE_PERMISSION,
             )
         }
     }
@@ -87,7 +94,7 @@ class PaintFragment : BaseFragment() {
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray
+        grantResults: IntArray,
     ) {
         @Suppress("DEPRECATION")
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -98,7 +105,7 @@ class PaintFragment : BaseFragment() {
             @Suppress("DEPRECATION")
             requestPermissions(
                 arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                REQUEST_STORAGE_PERMISSION
+                REQUEST_STORAGE_PERMISSION,
             )
         }
     }
@@ -147,7 +154,7 @@ class PaintFragment : BaseFragment() {
         return context?.let {
             ContextCompat.checkSelfPermission(
                 it,
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
             )
         } == PackageManager.PERMISSION_GRANTED
     }

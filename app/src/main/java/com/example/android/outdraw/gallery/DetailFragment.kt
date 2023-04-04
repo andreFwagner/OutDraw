@@ -7,6 +7,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.* // ktlint-disable no-wildcard-imports
 import androidx.core.net.toUri
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.android.outdraw.R
 import com.example.android.outdraw.base.BaseFragment
 import com.example.android.outdraw.base.NavigationCommand
@@ -27,7 +29,7 @@ class DetailFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentDetailBinding.inflate(inflater)
         binding.lifecycleOwner = this
@@ -44,7 +46,7 @@ class DetailFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.detailBackButton.setOnClickListener {
-            _viewModel.navigationCommand.postValue(NavigationCommand.Back)
+            findNavController().navigateUp()
         }
 
         binding.detailShareButton.setOnClickListener {
@@ -55,12 +57,12 @@ class DetailFragment : BaseFragment() {
             AlertDialog.Builder(activity)
                 .setMessage(R.string.delete_dialog)
                 .setPositiveButton(
-                    R.string.delete_dialog_yes
+                    R.string.delete_dialog_yes,
                 ) { _, _ ->
                     _viewModel.deletePainting(painting)
                 }
                 .setNegativeButton(
-                    R.string.delete_dialog_no
+                    R.string.delete_dialog_no,
                 ) { dialog, _ ->
                     dialog.cancel()
                 }

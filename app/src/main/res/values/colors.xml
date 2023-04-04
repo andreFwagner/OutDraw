@@ -9,9 +9,10 @@
     <color name="primaryTextColor">#000000</color>
     <color name="secondaryTextColor">#FF575757</color>
     <color name="generalBackground">#f3f4f3</color>
-    <color name="light_blue">#E2F0FB</color>
-    <color name="light_green">#E1E9E7</color>
-    <color name="green">#B2EFE0</color>
+    <color name="light_blue">#C7E7FF</color>
+    <color name="lighter_blue">#DBEEFC</color>
+    <color name="light_green">#B2F5EB</color>
+    <color name="green">#B2F5EB</color>
     <color name="light_rosa">#F6DADA</color>
     <color name="rosa">#F4B6B6</color>
     <color name="button_stroke_color">#575757</color>

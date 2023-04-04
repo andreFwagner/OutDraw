@@ -14,13 +14,11 @@
             android:id="@+id/action_homeFragment_to_paintFragment"
             app:destination="@id/paintFragment"
             app:enterAnim="@anim/fragment_fade_in"
-            app:exitAnim="@anim/fragment_fade_out"
             app:popExitAnim="@anim/fragment_fade_out" />
         <action
             android:id="@+id/action_homeFragment_to_galleryFragment"
             app:destination="@id/galleryFragment"
             app:enterAnim="@anim/fragment_fade_in"
-            app:exitAnim="@anim/fragment_fade_out"
             app:popExitAnim="@anim/fragment_fade_out" />
     </fragment>
     <fragment

@@ -23,7 +23,7 @@ class MyApp : Application() {
             viewModel {
                 GalleryViewModel(
                     get(),
-                    get() as Repository
+                    get() as Repository,
                 )
             }
             single { Repository(get()) }

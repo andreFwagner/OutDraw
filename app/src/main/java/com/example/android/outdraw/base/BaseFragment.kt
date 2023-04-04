@@ -17,35 +17,35 @@ abstract class BaseFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         _viewModel.showErrorMessage.observe(
-            this
+            this,
         ) {
             Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
         }
         _viewModel.showToast.observe(
-            this
+            this,
         ) {
             Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
         }
         _viewModel.showSnackBar.observe(
-            this
+            this,
         ) {
             Snackbar.make(this.requireView(), it, Snackbar.LENGTH_SHORT).show()
         }
         _viewModel.showSnackBarInt.observe(
-            this
+            this,
         ) {
             Snackbar.make(this.requireView(), getString(it), Snackbar.LENGTH_SHORT).show()
         }
 
         _viewModel.navigationCommand.observe(
-            this
+            this,
         ) { command ->
             when (command) {
                 is NavigationCommand.To -> findNavController().navigate(command.directions)
-                is NavigationCommand.Back -> findNavController().popBackStack()
+                is NavigationCommand.Back -> findNavController().navigateUp()
                 is NavigationCommand.BackTo -> findNavController().popBackStack(
                     command.destinationId,
-                    false
+                    false,
                 )
             }
         }

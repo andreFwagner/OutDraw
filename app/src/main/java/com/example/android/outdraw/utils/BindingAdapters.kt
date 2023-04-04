@@ -19,7 +19,7 @@ fun bindImage(imgView: ImageView, imgPath: String?) {
             .load(imgPath)
             .apply(
                 RequestOptions()
-                    .error(R.drawable.ic_broken_image)
+                    .error(R.drawable.ic_broken_image),
             )
             .into(imgView)
     }
@@ -32,7 +32,8 @@ fun bindArtPiece(imgView: ImageView, imgPath: String?) {
             .load(imgPath)
             .apply(
                 RequestOptions()
-                    .error(R.drawable.background)
+                    .placeholder(R.drawable.artpiece_placeholder)
+                    .error(R.drawable.artpiece_placeholder),
             )
             .into(imgView)
     }
