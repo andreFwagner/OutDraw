@@ -3,12 +3,12 @@ package at.andrewagner.outdraw.gallery
 import android.annotation.SuppressLint
 import android.app.Application
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.bumptech.glide.Glide
 import com.example.android.outdraw.R
 import at.andrewagner.outdraw.base.BaseViewModel
 import at.andrewagner.outdraw.base.NavigationCommand
@@ -16,6 +16,9 @@ import at.andrewagner.outdraw.database.ArtPieceData
 import at.andrewagner.outdraw.database.Painting
 import at.andrewagner.outdraw.network.ArtApi
 import at.andrewagner.outdraw.repository.Repository
+import coil.ImageLoader
+import coil.request.ImageRequest
+import coil.request.SuccessResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -76,12 +79,15 @@ class GalleryViewModel(val app: Application, private val repository: Repository)
     private suspend fun loadArt(uri: Uri, title: String): String {
         val file = File(app.getExternalFilesDir(null).toString() + "/artPiece-$title.jpg")
         withContext(Dispatchers.IO) {
-            val imageBitmap = Glide.with(app)
-                .asBitmap()
-                .load(uri)
-                .submit()
-                .get()
-            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, FileOutputStream(file))
+            val loader = ImageLoader(app)
+            val request = ImageRequest.Builder(app)
+                .data(uri)
+                .allowHardware(false) // Disable hardware bitmaps.
+                .build()
+
+            val result = (loader.execute(request) as SuccessResult).drawable
+            val bitmap = (result as BitmapDrawable).bitmap
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, FileOutputStream(file))
         }
         return file.absolutePath
     }
