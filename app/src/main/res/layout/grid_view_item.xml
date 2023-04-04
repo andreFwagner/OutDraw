@@ -9,7 +9,7 @@
 
         <variable
             name="painting"
-            type="com.example.android.outdraw.database.Painting" />
+            type="at.andrewagner.outdraw.database.Painting" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

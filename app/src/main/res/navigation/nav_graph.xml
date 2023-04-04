@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.android.outdraw.home.HomeFragment"
+        android:name="at.andrewagner.outdraw.home.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/fragment_home">
         <action
@@ -23,12 +23,12 @@
     </fragment>
     <fragment
         android:id="@+id/paintFragment"
-        android:name="com.example.android.outdraw.paint.PaintFragment"
+        android:name="at.andrewagner.outdraw.paint.PaintFragment"
         android:label="fragment_paint"
         tools:layout="@layout/fragment_paint" />
     <fragment
         android:id="@+id/galleryFragment"
-        android:name="com.example.android.outdraw.gallery.GalleryFragment"
+        android:name="at.andrewagner.outdraw.gallery.GalleryFragment"
         android:label="GalleryFragment">
         <action
             android:id="@+id/action_galleryFragment_to_detailFragment"
@@ -40,11 +40,11 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.android.outdraw.gallery.DetailFragment"
+        android:name="at.andrewagner.outdraw.gallery.DetailFragment"
         android:label="DetailFragment">
         <argument
             android:name="selectedPainting"
-            app:argType="com.example.android.outdraw.database.Painting" />
+            app:argType="at.andrewagner.outdraw.database.Painting" />
         <action
             android:id="@+id/action_detailFragment_to_galleryFragment"
             app:destination="@id/galleryFragment"

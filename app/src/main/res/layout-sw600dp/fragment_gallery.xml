@@ -7,14 +7,14 @@
 
         <variable
             name="viewmodel"
-            type="com.example.android.outdraw.gallery.GalleryViewModel" />
+            type="at.andrewagner.outdraw.gallery.GalleryViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/generalBackground"
-        tools:context="com.example.android.outdraw.MainActivity">
+        tools:context="com.example.android.outdraw.at.example.android.outdraw.MainActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/gallery_toolbar"

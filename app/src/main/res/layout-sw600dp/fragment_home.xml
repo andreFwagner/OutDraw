@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.android.outdraw.gallery.GalleryViewModel" />
+            type="at.andrewagner.outdraw.gallery.GalleryViewModel" />
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
@@ -141,6 +141,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/home_about_textview_2"
+                    app:srcCompat="@drawable/artpiece_placeholder"
                     tools:ignore="ContentDescription" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>

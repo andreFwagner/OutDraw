@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.android.outdraw.gallery.GalleryViewModel" />
+            type="at.andrewagner.outdraw.gallery.GalleryViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
