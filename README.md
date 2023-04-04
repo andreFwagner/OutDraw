@@ -8,7 +8,7 @@ a drawing app that pushes you out of your comfort zone
 ## Screenshots
 <br/>
 
-![Screenshot0](screenshots/screens4git.jpg)
+![Screenshot0](screenshots/banner_playstore.png)
 
 <br /><br /><br />
 
