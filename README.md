@@ -5,7 +5,7 @@ a drawing app that pushes you out of your comfort zone
 <br /><br /><br />
 
 
-## Screenshots
+## Look
 <br/>
 
 ![Screenshot0](screenshots/banner_playstore.png)
